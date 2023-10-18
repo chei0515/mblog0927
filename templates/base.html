@@ -1,44 +1,29 @@
-{% extends "base2.html" %}
-{%block title%}歡迎光臨我的部落格 {%endblock%}
-{%block headmessage%}
-    <h3 style='font-family:標楷體;'>本站文章列表</a>{% endblock %}
-{%block content%}
-{%for post in posts%}
-    <p style='font-family:微軟正黑體;font-size:14pt;font-weight:bold;'>
-<a href="/post/{{post.slug}}">{{post.title}}</a>
-    </p>
-  {%endfor%} 
-{%endblock%} 
-
-
+<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-
-<!--<html>
+<html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>歡迎光臨</title>
+        <title>
+            {% block title %}{% endblock title %}
+        </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     </head>
-    <body>-->
-
+    <body>
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-<!--        <h1>歡迎光臨部落格
+        {% include "header.html" %}
+        {% block headmessage %} {% endblock headmessage %}
         <hr>
-        {% for post in posts %}
-        <p style="font-family:微軟正黑體;font-size:14pt;font-weight:bold;">
-            <a href="/post/{{post.slug}}">{{post.title}}</a>
-        </p>
-        {% endfor %}
-        <hr>
-        現在時間{{now}}
+        {% block content %} {% endblock content %}
+        {% include "footer.html" %}
         <script src="" async defer></script>
+        <script <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     </body>
-</html>-->
+</html>
