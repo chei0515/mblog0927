@@ -10,12 +10,9 @@ def homepage(request):
     return render(request,'index.html',locals())
 
 def showpost(request,slug):
-    try:
-        post=Post.objects.get(slug=slug)
-        if post !=None:
-            return render(request,'post.html',locals())
-    except:
-        return redirect('/')
+    post=Post.objects.get(slug=slug)
+    if post !=None:
+        return render(request,'post.html',locals())
 '''
 def homepage(request):
     posts=Post.objects.all() #把資料庫的東西傳上來
