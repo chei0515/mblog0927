@@ -17,8 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from mysite import views as mv
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',mv.homepage,name="homepage"),
     path('post/<slug:slug>/',mv.showpost,name="showpost"),
+    path('about/',mv.about),#在127.0.0.1:8000後面加about 會跳到views的about  
+    path('about/<int:num>',mv.about,),#在127.0.0.1:8000後面加about+數字 會回傳網址上的數字 
+    path('post/<int:yr>/<int:mon>/<int:day>/<int:post_num>/', mv.Post, name='post-url'),
+
 ]
