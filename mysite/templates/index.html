@@ -1,7 +1,15 @@
 {% extends "base2.html" %}
-{%block title%}歡迎光臨我的部落格 {%endblock%}
-{%block headmessage%}
-    <h3 style='font-family:標楷體;'>本站文章列表</a>{% endblock %}
+{% block title %}歡迎光臨我的部落格 {%endblock%}
+{% block headmessage %}<h3 style='font-family:標楷體;'>本站文章列表</a>
+    hour:{{hour}}
+{% if hour >= 13 %}
+下午安 
+{% elif hour < 10 %}
+早安
+{% else %}
+你好
+{% endif %}
+{%endblock headmessage%}
 {%block content%}
 <a href="{% url 'post-url' 2015 12 1 01 %}">Show the Post</a> <!--連結-->
 測試
