@@ -1,0 +1,26 @@
+{% block title %}歡迎光臨我的部落格 {%endblock%}
+{% block headmessage %}<h3 style='font-family:標楷體;'>文章回復</a>
+    {%now 'Y M D'%}
+{%endblock headmessage%}
+{%block content%}
+
+{%for post in posts%}
+{% if forloop.first %}
+<table>
+    <tr background='#cccccc'>
+        <th>Text<th>
+        <th>pub_data<th>
+    </tr>
+{% endif %}
+    <tr background='{% cycle "#ffccff" "ccffcc" %}'>
+        <td>{{c.text}}</td>
+        <td>{{c.pub_date}}</td>
+    </tr>
+{% if forloop.last %}
+</table>
+{% endif %}
+{%empty%}
+<h2>沒有任何回復</h2>
+{% endfor %}
+{% endblock content%}
+

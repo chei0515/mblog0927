@@ -12,6 +12,12 @@ class Post(models.Model): #物件繼承models.Model
     def __str__(self) -> str: #-- python內建 --
         return   self.title
     
+class Comment(models.Model):
+        post=models.ForeignKey(Post,on_delete=models.CASCADE)
+        text=models.CharField(max_length=200)
+        pub_date=models.DateTimeField(auto_now_add=True)
+
+    
 class Product(models.Model):
     SIZES = (
         ('S', 'Smaill'),

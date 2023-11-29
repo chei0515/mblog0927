@@ -23,6 +23,15 @@ def about(request,num=-1):
     mhtml=f"<html><body><h1>I</h1><h3>am in NTUB</h3><h2>{num}</h2><body></html>" #要有f才會有數字
     return HttpResponse(mhtml)
 
+def show_all_posts(request):
+    posts=Post.objects.all()
+    return render(request,'allposts.html',locals())
+
+def show_comments(request,post_id):
+    comments=Post.objects.get(id=post_id).comment_set.all()
+    return render(request,'comments.html',locals())
+
+
 import random
 def about(request,num=-1):
     quotes = ['麥當勞',
@@ -45,6 +54,7 @@ def about(request,num=-1):
     else:
         quote=quotes[num]
     return render(request, 'about.html', locals())  
+
 
 def carlist(request, maker=0):
 	car_maker = ['Ford', 'Honda', 'Mazda']
