@@ -3,6 +3,8 @@ from mysite.models import Post
 from django.http import HttpResponse
 from datetime import datetime
 from django.shortcuts import redirect
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 # Create your views here.
 def homepage(request): #第一個一定是request
     posts=Post.objects.all()
@@ -75,8 +77,17 @@ def carlist(request, maker=0):
 	cars = car_list[maker]
 	return render(request, 'carlist.html', locals())
 
-
-
+def new_post(request):
+    print(f'form method:{request.method}')
+    if request.method=="GET":
+        return render(request,'my_form1.html', locals())
+    elif request.method=='POST':
+        title=request.POST['title']
+        slug=request.POST['slug']
+        body=request.POST['content']
+        post=Post(title=title,slug=slug,body=body)
+        post.save()
+        return HttpResponseRedirect(reverse('show_all_posts'))        
 
 '''
 def homepage(request):

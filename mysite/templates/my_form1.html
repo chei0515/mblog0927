@@ -1,0 +1,23 @@
+{% extends 'base2.html' %}
+{% load markdown_extras %}
+{% block title %} {{ post.title }} - 表單輸入 {% endblock %}
+{% block headmessage %}
+<a style='font-family:微軟正黑體;' href='/'>回首頁</a>
+{% endblock headmessage %}
+
+{% block content %} 
+
+
+<form action="" method='post'>
+    {% csrf_token %}
+    <label for="fname">標題:</label><br>
+    <input type="text" id="title" name="title"><br>
+    <label for="lname">slug:</label><br>
+    <input type="text" id="slug" name="slug"><br><br>
+    <label for='content'>內文</lable><br>
+    <textarea id='comtemt' name='content' cols='30'>
+    </textarea>
+    <br>
+    <input type='submit' value='送出'>
+  </form>
+{% endblock content %}

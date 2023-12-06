@@ -29,4 +29,5 @@ urlpatterns = [
     path('post/<int:yr>/<int:mon>/<int:day>/<int:post_num>/', views.Post, name='post-url'),
     path('carlist/', views.carlist),
     path('carlist/<int:maker>/', views.carlist, name='carlist-url'),
+    path('post/new',views.new_post,name='new_post')
 ]
