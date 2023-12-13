@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from mysite import views 
+from mytest import views as testv
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,5 +30,8 @@ urlpatterns = [
     path('post/<int:yr>/<int:mon>/<int:day>/<int:post_num>/', views.Post, name='post-url'),
     path('carlist/', views.carlist),
     path('carlist/<int:maker>/', views.carlist, name='carlist-url'),
-    path('post/new',views.new_post,name='new_post')
+    path('post/new',views.new_post,name='new_post'),
+    path('test',views.homepage,name='test-html'),
+    path('tset',testv.index,name='test-new')
+    
 ]

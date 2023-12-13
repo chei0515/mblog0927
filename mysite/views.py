@@ -10,6 +10,7 @@ def homepage(request): #第一個一定是request
     posts=Post.objects.all()
     now=datetime.now()
     hour = now.timetuple().tm_hour
+    years=range(1960,2024)
     return render(request,'index.html',locals())
 
 def showpost(request,slug):
@@ -84,8 +85,9 @@ def new_post(request):
     elif request.method=='POST':
         title=request.POST['title']
         slug=request.POST['slug']
+        category=request.POST.getlist['category']
         body=request.POST['content']
-        post=Post(title=title,slug=slug,body=body)
+        post=Post(title=title,slug=slug,category=category)
         post.save()
         return HttpResponseRedirect(reverse('show_all_posts'))        
 

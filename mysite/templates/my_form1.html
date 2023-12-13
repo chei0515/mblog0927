@@ -10,8 +10,19 @@
 
 <form action="" method='post'>
     {% csrf_token %}
-    <label for="fname">標題:</label><br>
+    <label for="title">標題:</label><br>
     <input type="text" id="title" name="title"><br>
+    
+    <label for="title">類別:</label><br>
+    <input type='checkbox' id='tech' name='category' value="科技"></input>
+    <label for 'tech'>科技</label>
+    <input type='checkbox' id='mood' name='category' value="心情"></input>
+    <label for 'mood'>心情</label>
+    <input type='checkbox' id='byeeee' name='category' value="當掉"></input>
+    <label for 'byeeee'>當掉</label>
+    <input type='checkbox' id='edu' name='category' value="教育"></input>
+    <label for 'edu'>教育</label>
+
     <label for="lname">slug:</label><br>
     <input type="text" id="slug" name="slug"><br><br>
     <label for='content'>內文</lable><br>
