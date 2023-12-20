@@ -32,6 +32,9 @@ urlpatterns = [
     path('carlist/<int:maker>/', views.carlist, name='carlist-url'),
     path('post/new',views.new_post,name='new_post'),
     path('test',views.homepage,name='test-html'),
-    path('tset',testv.index,name='test-new')
+    path('tset',testv.index,name='test-new'),
+    path('delpost/<int:pid>/', testv.delpost),
+    path('test/contact',testv.contact)
+
     
 ]

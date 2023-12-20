@@ -1,12 +1,23 @@
 from django.shortcuts import render,redirect
 from mytest.models import Post,Mood
-
+from mytest import models, forms
+#from mytest.forms import ContactForm
 # Create your views here.
+
+def delpost(request, pid):
+    if  pid:
+        try:
+            post = Post.objects.get(id=pid)
+            post.delete()
+        except:
+            print('刪除錯誤 pid=',pid)
+            pass
+    return redirect('/')
+
 
 def index(request):
     posts=Post.objects.filter(enabled=True).order_by('pub_time')[:30]
     moods=Mood.objects.all()
-    
     
     if request.method=='GET':
         return render(request,'myform.html',locals())
@@ -27,3 +38,18 @@ def index(request):
     else:
         message='post/get 出現錯誤'
         return render(request,'myform.html',locals())
+    
+def contact(request):
+    if request.method=='GET':
+        form = forms.ContactForm()
+        return render(request,'mycontact.html',locals())
+    elif request.method=='POST':
+        form = forms.ContactForm(request.POST)
+        if form.is_valid():
+            user_name=form.cleaned_data['user_name']
+            print('user_name',user_name)
+            return render(request,'mycontact.html',locals())
+    else:
+        message='出現錯誤'
+        return render(request,'mycontact.html',locals())
+
