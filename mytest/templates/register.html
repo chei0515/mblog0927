@@ -1,0 +1,20 @@
+{% extends 'base2.html' %}
+{% load markdown_extras %}
+{% block title %} {{ post.title }} - 表單輸入-2 {% endblock %}
+
+{% block content %} 
+    
+<h2>html</h2>
+{% if message %}
+    <div class='alert alert-warning'>
+         {{ message }}
+    </div>
+{% endif %}
+
+<form action="" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type='submit' value='張貼'>
+    <input type='reset' value='清除重填'>
+</form>
+{% endblock content %}
