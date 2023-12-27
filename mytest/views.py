@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from mytest.models import Post,Mood
-from mytest import models, forms
+from mytest.forms import  ContactForm,PostForm
 #from mytest.forms import ContactForm
 # Create your views here.
 
@@ -41,10 +41,10 @@ def index(request):
     
 def contact(request):
     if request.method=='GET':
-        form = forms.ContactForm()
+        form =ContactForm()
         return render(request,'mycontact.html',locals())
     elif request.method=='POST':
-        form = forms.ContactForm(request.POST)
+        form =ContactForm(request.POST)
         if form.is_valid():
             user_name=form.cleaned_data['user_name']
             print('user_name',user_name)
@@ -53,3 +53,15 @@ def contact(request):
         message='出現錯誤'
         return render(request,'mycontact.html',locals())
 
+def post2db(request):
+    if request.method=='GET':
+        form =PostForm()
+        return render(request,'myPost2db.html',locals())
+    elif request.method=='POST':
+        form =PostForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request,'myPost2db.html',locals())
+    else:
+        message='出現錯誤'
+        return render(request,'myPost2db.html',locals())
